@@ -160,15 +160,19 @@ class LeftElement extends PureComponent {
         testID={leftElementTestID}
         style={[styles.leftElementContainer, { transform: [{ rotate: spin }] }]}
       >
-        <IconToggle
-          key={leftElement}
-          name={leftElement}
-          color={flattenLeftElement.color}
-          onPress={onPress}
-          size={size}
-          iconSet={iconSet}
-          style={flattenLeftElement}
-        />
+        {
+            React.isValidElement(leftElement) ?
+            leftElement :
+            <IconToggle
+              key={leftElement}
+              name={leftElement}
+              color={flattenLeftElement.color}
+              onPress={onPress}
+              size={size}
+              iconSet={iconSet}
+              style={flattenLeftElement}
+            />
+        }
       </Animated.View>
     );
   }
